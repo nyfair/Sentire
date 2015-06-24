@@ -1,4 +1,4 @@
 target
 res
+Cargo.lock
 *.a
-*.sh

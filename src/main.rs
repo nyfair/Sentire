@@ -35,15 +35,10 @@ fn main() {
 	renderer.copy_ex(&texture, None, Some(Rect::new_unwrap(0, 0, w, h)), 0.0, None, (false, true));
 	renderer.present();
 
-	let mut running = true;
-	while running {
-		for event in sdl_context.event_pump().poll_iter() {
-			match event {
-				Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
-					running = false
-				},
-				_ => {}
-			}
+	for event in sdl_context.event_pump().wait_iter() {
+		match event {
+			Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => break,
+			_ => {}
 		}
 	}
 }
